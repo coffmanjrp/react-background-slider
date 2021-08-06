@@ -16,12 +16,13 @@ function App() {
     setSlide((slide) => (slide >= length ? 1 : slide + 1));
   };
 
-  console.log('slide:' + slide, 'length:' + length);
-
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ backgroundImage: `url("${images[slide - 1].url}")` }}
+    >
       <div className="slider-container">
-        {images.length > 0 &&
+        {length > 0 &&
           images.map((image) => (
             <div
               key={image.id}
@@ -31,11 +32,11 @@ function App() {
               }}
             ></div>
           ))}
-        <button className="arrow left-arrow">
-          <FontAwesomeIcon icon={faArrowLeft} onClick={handlePrev} />
+        <button className="arrow left-arrow" onClick={handlePrev}>
+          <FontAwesomeIcon icon={faArrowLeft} />
         </button>
-        <button className="arrow right-arrow">
-          <FontAwesomeIcon icon={faArrowRight} onClick={handleNext} />
+        <button className="arrow right-arrow" onClick={handleNext}>
+          <FontAwesomeIcon icon={faArrowRight} />
         </button>
       </div>
     </div>
